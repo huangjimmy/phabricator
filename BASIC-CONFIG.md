@@ -6,18 +6,16 @@ A full list of all available environment variables can be found in the [Full Env
 
 # Configuring MySQL
 
-You need to do this before running the container, or things won't work.  If you have MySQL running in another container, you can use `MYSQL_LINKED_CONTAINER`, like so:
+You need to do this before running the container, or things won't work.  If you have MySQL running in another container, you can use `MYSQL_HOST`, like so:
 
 ```
 docker run ... \
-    --env MYSQL_LINKED_CONTAINER=MYSQL \
+    --env MYSQL_HOST=mysql \
     --env MYSQL_USER=phabricator \
     --env MYSQL_PASS=password \
     --link somecontainer:mysql \
     ...
 ```
-
-Note that the environment variable's value is equal to the linked container's name once converted to the variable format; that is a linked container name of `my.sql.container` would become `MY_SQL_CONTAINER`.
 
 If your instance of MySQL is running on the host or some external system, you can connect to it using the `MYSQL_USER` and associated variables like so:
 
