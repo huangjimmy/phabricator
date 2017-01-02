@@ -18,12 +18,15 @@ services:
      - MYSQL_USER=root
      - MYSQL_PASS=phabricator
      - PHABRICATOR_REPOSITORY_PATH=/repos
-     - PHABRICATOR_HOST=myphabricator.com
+     - PHABRICATOR_HOST=myphabricator.com:62080
+     - OVERRIDE_PHABRICATOR_URI='https://github.com/huangjimmy/phabricator-1.git'
+     - OVERRIDE_LIBPHUTIL_URI='https://github.com/huangjimmy/libphutil.git'
     image: hachque/phabricator
   mysql:
     restart: always
     volumes:
      - /srv/docker/phabricator/mysql:/var/lib/mysql
-    image: mysql:5.7.14
+     - /srv/docker/phabricator/mysql.conf.d:/etc/mysql/conf.d
+    image: mysql:5.7.16
     environment:
      - MYSQL_ROOT_PASSWORD=phabricator

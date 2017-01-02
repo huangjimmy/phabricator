@@ -3,6 +3,8 @@
 set -e
 set -x
 
+ export LC_ALL=zh_CN.UTF-8
+
 # If this is a derived (baked) image, skip all of this logic.
 if [ -f /baked ]; then
   exit 0
@@ -262,3 +264,5 @@ if [ "$SCRIPT_AFTER_MIGRATION" != "" ]; then
   popd
 fi
 
+sudo -u "$PHABRICATOR_VCS_USER" /srv/phabricator/phabricator/bin/config set environment.append-paths '["/bin","/usr/bin","/usr/local/bin","/usr/lib/git"]'
+git config --global core.quotepath false
