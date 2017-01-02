@@ -19,8 +19,8 @@ services:
      - MYSQL_PASS=phabricator
      - PHABRICATOR_REPOSITORY_PATH=/repos
      - PHABRICATOR_HOST=myphabricator.com:62080
-     - OVERRIDE_PHABRICATOR_URI='https://github.com/huangjimmy/phabricator-1.git'
-     - OVERRIDE_LIBPHUTIL_URI='https://github.com/huangjimmy/libphutil.git'
+     - OVERRIDE_PHABRICATOR_URI=https://github.com/huangjimmy/phabricator-1.git
+     - OVERRIDE_LIBPHUTIL_URI=https://github.com/huangjimmy/libphutil.git
     image: hachque/phabricator
   mysql:
     restart: always
