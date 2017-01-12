@@ -21,12 +21,12 @@ services:
      - PHABRICATOR_HOST=myphabricator.com:62080
      - OVERRIDE_PHABRICATOR_URI=https://github.com/huangjimmy/phabricator-1.git
      - OVERRIDE_LIBPHUTIL_URI=https://github.com/huangjimmy/libphutil.git
-    image: hachque/phabricator
+    image: huangsj/phabricator:20170102
   mysql:
     restart: always
     volumes:
      - /srv/docker/phabricator/mysql:/var/lib/mysql
-     - /srv/docker/phabricator/mysql.conf.d:/etc/mysql/conf.d
+     - /srv/docker/phabricator/conf/mysql:/etc/mysql/conf.d
     image: mysql:5.7.16
     environment:
      - MYSQL_ROOT_PASSWORD=phabricator
