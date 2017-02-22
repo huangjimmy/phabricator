@@ -22,6 +22,10 @@ services:
      - OVERRIDE_PHABRICATOR_URI=https://github.com/huangjimmy/phabricator-1.git
      - OVERRIDE_LIBPHUTIL_URI=https://github.com/huangjimmy/libphutil.git
     image: huangsj/phabricator:20170102
+     - OVERRIDE_LIBPHUTIL_BRANCH=stable
+     - LANG=en_US.UTF-8
+     - LC_ALL=en_US.UTF-8
+     - ENABLE_APCU=true
   mysql:
     restart: always
     volumes:
