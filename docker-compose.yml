@@ -3,17 +3,19 @@ services:
   phabricator:
     restart: always
     ports:
-     - "62443:443"
-     - "62080:80"
-     - "62022:22"
+     - "443:443"
+     - "80:80"
+     - "24:22"
     volumes:
      - /srv/docker/phabricator/repos:/repos
+     - /srv/docker/phabricator/hostkeys:/srv/phabricator/phabricator/hostkeys
      - /srv/docker/phabricator/extensions:/srv/phabricator/phabricator/src/extensions
     depends_on:
      - mysql
     links:
      - mysql
     environment:
+     - PHABRICATOR_HOST_KEYS_PATH=/srv/phabricator/phabricator/hostkeys/persists
      - MYSQL_HOST=mysql
      - MYSQL_USER=root
      - MYSQL_PASS=phabricator
@@ -21,11 +23,11 @@ services:
      - PHABRICATOR_HOST=myphabricator.com:62080
      - OVERRIDE_PHABRICATOR_URI=https://github.com/huangjimmy/phabricator-1.git
      - OVERRIDE_LIBPHUTIL_URI=https://github.com/huangjimmy/libphutil.git
-     - OVERRIDE_LIBPHUTIL_BRANCH=stable
+   #  - OVERRIDE_LIBPHUTIL_BRANCH=stable
      - LANG=en_US.UTF-8
      - LC_ALL=en_US.UTF-8
      - ENABLE_APCU=true
-    image: huangsj/phabricator:20170102
+    image: huangsj/phabricator:20170315
   mysql:
     restart: always
     volumes:
